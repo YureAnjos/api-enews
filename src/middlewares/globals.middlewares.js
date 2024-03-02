@@ -4,7 +4,6 @@ import * as userRepositories from "../repositories/user.repositories.js";
 
 export const validId = (req, res, next) => {
   const { id } = req.params;
-  console.log(req.params);
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
     return res.status(400).send({ message: "Invalid ID" });
@@ -15,8 +14,6 @@ export const validId = (req, res, next) => {
 };
 
 export const isAuthorized = (req, res, next) => {
-  console.log(req.params);
-
   const { authorization } = req.headers;
   if (!authorization) return res.status(400).send({ message: "Unauthorized" });
 
